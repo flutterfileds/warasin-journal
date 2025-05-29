@@ -1,9 +1,5 @@
 import re
 import string
-from nltk.tokenize import word_tokenize
-from nltk.stem import WordNetLemmatizer
-
-lemmatizer = WordNetLemmatizer()
 
 def clean_text(text):
     text = text.lower()
@@ -13,7 +9,6 @@ def clean_text(text):
     text = re.sub(r'\n', ' ', text)
     text = re.sub(r'(\w)\1{2,}', r'\1', text)
 
-    tokens = word_tokenize(text)
-    lemmatized_tokens = [lemmatizer.lemmatize(word) for word in tokens]
+    tokens = text.split()
 
-    return " ".join(lemmatized_tokens)
+    return " ".join(tokens)
